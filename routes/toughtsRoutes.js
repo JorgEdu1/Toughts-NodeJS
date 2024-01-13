@@ -8,6 +8,7 @@ const checkAuth = require('../helpers/auth').checkAuth;
 //routes
 router.get('/add', checkAuth, ToughtsController.createTought);
 router.post('/add', checkAuth, ToughtsController.createToughtSave);
+router.get('/edit/:id', checkAuth, ToughtsController.updateTought);
 router.get('/dashboard', checkAuth, ToughtsController.dashboard);
 router.post('/remove', checkAuth, ToughtsController.removeTought);
 router.get('/', ToughtsController.showToughts);
