@@ -7,6 +7,39 @@ module.exports = class AuthController {
         res.render('auth/login');
     }
 
+    static async loginPost(req, res) {
+        const { email, password } = req.body;
+
+        //check if user exists
+        const user = await User.findOne({ where: { email: email } });
+
+        if (!user) {
+            req.flash('message', 'Email nao encontrado, tente novamente!');
+            res.render('auth/login');
+
+            return
+        }
+
+        //check if password is correct
+
+        const isPasswordCorrect = bcrypt.compareSync(password, user.password);
+
+        if (!isPasswordCorrect) {
+            req.flash('message', 'Senha incorreta, tente novamente!');
+            res.render('auth/login');
+
+            return
+        }
+
+        //initialize session
+        req.session.userid = user.id
+
+        req.flash('message', 'Login efetuado com sucesso!');
+        req.session.save(() => {
+            res.redirect('/');
+        });
+    }
+
     static register(req, res) {
         res.render('auth/register');
     }
