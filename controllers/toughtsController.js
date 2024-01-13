@@ -90,4 +90,28 @@ module.exports = class ToughtsController {
 
         res.render('toughts/edit', { tought });
     }
+
+    static async updateToughtSave(req, res) {
+        const id = req.body.id;
+        
+        const tought = {
+            title: req.body.title,
+        }
+
+        try {
+            await Tought.update(tought, {
+                where: {
+                    id: id
+                }
+            });
+    
+            req.flash('message', 'Pensamento Atualizado com sucesso!');
+    
+            req.session.save(() => {
+                res.redirect('/toughts/dashboard');
+            })
+        } catch(err) {
+            console.log(err);
+        }
+    }
 }
