@@ -1,4 +1,14 @@
 <div class="home-header">
+    {{#if search}}
+        <h1>{{#if this.toughtQty}} 
+            {{this.toughtQty}}
+        {{else}}
+            0
+        {{/if}}
+            Resultados para: <span>{{this.search}}</span></h1>
+    {{else}}
+        <h1>Conheça alguns dos nossos <span>Pensamentos</span>:</h1>
+    {{/if}}
     <h1>Todos os Pensamentos</h1>
     <form action="/" method="GET">
         <input type="text" name="search" placeholder="Pesquisar">
@@ -25,7 +35,10 @@
             <blockquote>
                 "{{this.title}}"
             </blockquote>
-            <figcaption>por <span>{{this.User.name}}</span></figcaption>
+            <div class="infos-toughts">
+                <figcaption>por <span>{{this.User.name}}</span></figcaption>
+                <figcaption class="date">{{this.createdAt}}</figcaption>
+            </div>
         </figure>
     {{/each}}
 </div>
