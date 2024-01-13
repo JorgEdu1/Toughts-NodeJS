@@ -192,6 +192,10 @@ form input[type="submit"]:hover, .btn:hover {
     background-color: #fff;
     color: #f6982d;
 }
+
+.dashboard a {
+    color: #f6982d;
+}
     
 
 /* FOOTER */
