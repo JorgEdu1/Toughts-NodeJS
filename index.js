@@ -16,7 +16,7 @@ const User = require('./models/User');
 const toughtsRoutes = require('./routes/toughtsRoutes');
 
 //import controllers
-const ToughtsController = require('./controllers/ToughtsController');
+const ToughtsController = require('./controllers/toughtsController');
 
 //template engine
 app.engine('handlebars', exphbs.engine());
