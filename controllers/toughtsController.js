@@ -39,8 +39,6 @@ module.exports = class ToughtsController {
             return toughtFormatted;
         });
 
-        console.log(toughts)
-
         let toughtQty = toughts.length;
 
         if(toughtQty === 0) {
